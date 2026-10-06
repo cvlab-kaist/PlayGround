@@ -10,3 +10,14 @@
   <a href="https://github.com/deep-overflow">Seongchan&nbsp;Kim</a> ·
   <a href="https://cvlab.kaist.ac.kr/members">Seungryong&nbsp;Kim</a><sup>†</sup>
 </p>
+
+<p align="center">KAIST&nbsp;AI<br><sub>† Corresponding author</sub></p>
+
+<h3 align="center">arXiv 2026</h3>
+
+<h3 align="center">
+  Paper (coming soon) |
+  <a href="https://cvlab-kaist.github.io/Tetris3D/">Project Page</a>
+</h3>
+
+<p align="center"><b>Code and model weights will be updated soon.</b></p>
