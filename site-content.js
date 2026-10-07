@@ -36,7 +36,9 @@ window.SITE_CONFIG = {
     "marker": "†"
   }
 ],
-  "affiliations": "",
+  "affiliations": "KAIST AI",
+  "authorNotes": "†: Corresponding Author",
+  "venue": "arXiv 2026",
   "paperUrl": "assets/PlayGround-paper.pdf",
   "codeUrl": "",
   "citationComment": "Draft citation. Author names are supplied; final publication metadata is pending.",

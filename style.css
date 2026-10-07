@@ -71,6 +71,9 @@ h1,h2,h3,h4 { margin:0; line-height:1.2; letter-spacing:-.035em; }
 .author-entry a:hover::after { width:100%; }
 .author-entry sup { margin-left:2px; font-size:.66em; line-height:0; position:relative; top:-.5em; color:#405f91; }
 .hero-meta small { display:block; color:var(--muted); margin-top:6px; }
+.hero-meta .hero-affiliation { margin-top:14px; font-size:18px; font-weight:600; color:#3f5170; letter-spacing:-.01em; }
+.hero-meta .hero-notes { margin-top:4px; font-size:14px; font-style:italic; color:var(--muted); }
+.hero-venue { margin-top:14px; font-size:20px; font-weight:700; color:var(--blue-dark); letter-spacing:-.015em; }
 .hero-buttons { display:flex; align-items:center; justify-content:center; gap:10px; margin:28px 0 0; flex-wrap:wrap; }
 .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:7px; border:1px solid var(--line); background:white; padding:11px 18px; font-size:12px; font-weight:600; color:#53647d; min-height:44px; transition:transform .2s,box-shadow .2s,border-color .2s; }
 .btn svg { width:16px; height:16px; }

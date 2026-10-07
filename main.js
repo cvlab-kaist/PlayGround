@@ -32,6 +32,12 @@
     const affiliations=$('#affiliation-list');
     affiliations.textContent=config.affiliations || '';
     affiliations.hidden=!config.affiliations;
+    const notes=$('#author-notes');
+    notes.textContent=config.authorNotes || '';
+    notes.hidden=!config.authorNotes;
+    const venue=$('#venue');
+    venue.textContent=config.venue || '';
+    venue.hidden=!config.venue;
     $('#author-meta').hidden=false;
   }
   const codeLink=$('#code-link');
