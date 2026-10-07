@@ -50,10 +50,19 @@
   // The portable preview embeds the manuscript. The published folder uses a normal relative PDF URL.
   let paperBlobUrl=null;
   $$('.paper-link').forEach(link=>{
-    if(config.paperUrl && config.paperUrl!=='embedded') link.href=config.paperUrl;
+    const paperUrl=config.paperUrl && config.paperUrl!=='embedded' ? config.paperUrl : '';
+    if(paperUrl){
+      link.href=paperUrl; link.target='_blank'; link.rel='noopener';
+      link.removeAttribute('aria-disabled'); link.removeAttribute('role'); link.removeAttribute('title');
+      $('.coming-soon',link)?.remove();
+    }
+    link.addEventListener('keydown', e=>{if(e.key==='Enter'&&!link.href){e.preventDefault();link.click();}});
     link.addEventListener('click', e=>{
       const embedded=$('#embedded-paper');
-      if(!embedded) return;
+      if(!embedded){
+        if(!paperUrl){e.preventDefault();notify('The paper link will be added soon.');}
+        return;
+      }
       e.preventDefault();
       if(!paperBlobUrl){
         try {

@@ -39,7 +39,7 @@ window.SITE_CONFIG = {
   "affiliations": "KAIST AI",
   "authorNotes": "†: Corresponding Author",
   "venue": "arXiv 2026",
-  "paperUrl": "assets/PlayGround-paper.pdf",
+  "paperUrl": "",
   "codeUrl": "",
   "citationComment": "Draft citation. Author names are supplied; final publication metadata is pending.",
   "provenance": "Table 1 and abstract: 8295_PLAYGROUND_Progressive_La (1).pdf, pp. 1 and 7. Figures: user-provided pdf.zip."
