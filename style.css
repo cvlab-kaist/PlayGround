@@ -1,6 +1,6 @@
 /* PlayGround project page — static HTML/CSS/JS, with the AgentRVOS Wanted Sans webfont.
    The font stylesheet is loaded from its original CDN; no font files are bundled. */
-:root {
+:root { color-scheme:only light;
   --ink:#17263c; --body:#42516a; --muted:#718099; --line:#e5eaf1;
   --blue:#446bb6; --blue-dark:#2d4e8a; --blue-soft:#f0f5ff;
   --teal:#258b88; --paper:#ffffff; --subtle:#f8faff;
