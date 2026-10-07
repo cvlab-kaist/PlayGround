@@ -133,7 +133,7 @@
       });
       tbody.append(tr);
     });
-    const label=dataset==='crello'?'Crello-v4':'LICA (zero-shot)';
+    const label=dataset==='crello'?'Crello':'LICA (zero-shot)';
     $('#results-caption').textContent=label+' quantitative results from Table 1 of the supplied manuscript.';
     $('#dataset-panel').setAttribute('aria-labelledby','tab-'+dataset);
     $$('[data-dataset]').forEach(b=>{const selected=b.dataset.dataset===dataset;b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1;});
