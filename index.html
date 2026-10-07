@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>PlayGround — Progressive Layout Generation with Render-Grounded Planning</title>
+ <meta name="description" content="PlayGround progressively plans and composes editable graphic designs from the current rendered canvas. Explore the framework, data construction, results, and intention-to-design extension.">
+ <meta name="theme-color" content="#ffffff">
+ <meta property="og:title" content="PlayGround: Progressive Layout Generation with Render-Grounded Planning">
+ <meta property="og:description" content="Plan from the current canvas. Compose one functional group at a time.">
+ <meta property="og:type" content="website">
+ <link rel="icon" href="assets/favicon.png" type="image/png">
+ <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body data-preview="false">
+ <a class="skip-link" href="#main">Skip to content</a>
+ <header class="site-header">
+  <div class="header-inner">
+   <a class="header-brand" href="#overview" aria-label="PlayGround home"><span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>PlayGround</a>
+   <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="top-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+   <nav class="top-nav" id="top-nav" aria-label="Main navigation">
+    <a href="#abstract" data-nav="abstract">Abstract</a>
+    <a href="#data-construction" data-nav="data-construction">Data construction</a>
+    <a href="#playground" data-nav="playground">PlayGround</a>
+    <a href="#results" data-nav="results">Results</a>
+    <a href="#intention-to-design" data-nav="intention-to-design">Extension</a>
+    <a href="#citation" data-nav="citation" class="nav-citation">Citation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+   </nav>
+  </div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+ </header>
+ <aside class="side-nav" aria-label="Section navigation"><span class="side-heading">On this page</span><a href="#overview" data-nav="overview">Overview</a><a href="#abstract" data-nav="abstract">Abstract</a><a href="#data-construction" data-nav="data-construction">Data construction</a><a href="#playground" data-nav="playground">PlayGround</a><a href="#results" data-nav="results">Results</a><a href="#intention-to-design" data-nav="intention-to-design">Extension</a><a href="#citation" data-nav="citation">Citation</a></aside>
+ <main id="main">
+  <section id="overview" class="hero" data-section>
+   <div class="hero-inner">
+    <div class="eyebrow">Editable graphic design</div>
+    <div class="hero-wordmark">
+     <img class="hero-mascot" src="assets/mascot.webp" width="900" height="743" alt="PlayGround mascot holding a paintbrush, from rectangle (1).pdf" fetchpriority="high">
+     <h1 data-editable="project-name">PlayGround</h1>
+    </div>
+    <p class="hero-subtitle" data-editable="project-subtitle"><span>Progressive Layout Generation</span><span>with Render-Grounded Planning</span></p>
+    <div class="hero-meta" id="author-meta"><div class="author-list" id="author-list" aria-label="Authors"><span class="author-row"><span class="author-entry"><a href="https://jefflee0810.github.io/" target="_blank" rel="noopener noreferrer">Jaeho&nbsp;Lee</a></span><span class="author-entry"><a href="http://junhwan26.github.io/" target="_blank" rel="noopener noreferrer">Junhwan&nbsp;Heo</a></span><span class="author-entry"><a href="https://junghyun-james-park.github.io/" target="_blank" rel="noopener noreferrer">Junghyun&nbsp;Park</a></span><span class="author-entry"><a href="https://wjun0830.github.io/" target="_blank" rel="noopener noreferrer">Wonjun&nbsp;Moon</a></span></span><span class="author-row"><span class="author-entry"><a href="https://cvlab-kaist.github.io/Playground/#overview" target="_blank" rel="noopener noreferrer">Eunju&nbsp;Yang</a></span><span class="author-entry"><a href="http://www.linkedin.com/in/hoosong0235" target="_blank" rel="noopener noreferrer">Seungho&nbsp;Jang</a></span><span class="author-entry"><a href="https://github.com/deep-overflow" target="_blank" rel="noopener noreferrer">Seongchan&nbsp;Kim</a></span><span class="author-entry"><a href="https://cvlab.kaist.ac.kr/members" target="_blank" rel="noopener noreferrer">Seungryong&nbsp;Kim</a><sup>†</sup></span></span></div><small id="affiliation-list" hidden></small></div>
+    <div class="hero-buttons">
+     <a class="btn btn-primary paper-link" href="assets/PlayGround-paper.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg> Read the paper</a>
+     <a class="btn" id="code-link" aria-disabled="true" role="link" tabindex="0" title="The code URL has not been supplied"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg> Code <span class="coming-soon">Coming soon</span></a>
+     <a class="btn" href="#citation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7H4v6h5v4H4m16-10h-5v6h5v4h-5"/></svg> BibTeX</a>
+    </div>
+    <figure class="hero-video">
+     <div class="hero-video-frame">
+      <video controls muted playsinline preload="metadata" width="1920" height="1080" poster="assets/videos/playground-pipeline-poster.webp" aria-label="PlayGround pipeline walkthrough: an editable design built turn by turn, including a retry with feedback">
+       <source src="assets/videos/playground-pipeline.mp4" type="video/mp4">
+       Your browser cannot play this video. <a href="assets/videos/playground-pipeline.mp4">Download the walkthrough (MP4)</a>.
+      </video>
+     </div>
+     <figcaption>Pipeline walkthrough on the sample from Fig. 10: an edited replay of the saved run, without sound.</figcaption>
+    </figure>
+    <div class="tldr">
+     <div class="tldr-header"><span class="tldr-label">TL;DR</span><span class="tldr-flow">Observe → Plan → Compose → Verify</span></div>
+     <p data-editable="tldr">We propose <strong>PlayGround</strong>, a progressive layout generation framework that adaptively adjusts the design workflow based on the <strong>current rendered canvas</strong>.</p>
+     <p class="tldr-result" data-editable="tldr-results">Under our six-criterion VLM evaluation, PlayGround leads the evaluated baselines on <em>all six criteria on Crello-v4</em> and <em>five of six on LICA</em>, with zero-shot evaluation on LICA.</p>
+    </div>
+   </div>
+  </section>
+  <section id="abstract" class="section abstract-section" data-section>
+   <div class="container"><div class="reading">
+    <div class="section-kicker"><span>01</span> The idea</div>
+    <h2 data-editable="abstract-title">Abstract</h2>
+    <p class="abstract-text" data-editable="abstract">Generating editable graphic designs requires arranging visual and textual elements into a coherent composition while preserving their content and editability. Although recent MLLM-based approaches employ iterative generation and visual refinement to reflect the real-world design workflows, their high-level plans are predetermined prior to execution, limiting their adaptability as the design evolves. To address this limitation, we propose PlayGround, a progressive layout generation framework that dynamically adapts to the current rendered canvas. PlayGround establishes a progressive design loop comprising a Progressive Planner, a Layout Generator, and a Visual Verifier, guided by a Structure-Aware Retriever. Given an initial set of unordered elements, the Structure-Aware Retriever initially infers a coarse layout structure to retrieve structurally similar reference designs. Subsequently, at each turn, the Progressive Planner examines the current rendered canvas alongside the remaining elements, forms the next functional group, and plans its composition. The Layout Generator then predicts editable layout attributes, while the Visual Verifier evaluates rendered candidates and provides feedback when refinement is necessary. To train the Progressive Planner with step-wise supervision, we construct a two-stage data generation pipeline that extracts functional groups and turn-level planning trajectories from completed designs. Experiments on Crello and LICA demonstrate the effectiveness of PlayGround over existing methods. Our code and weights will be publicly released.</p>
+   </div></div>
+  </section>
+  <section id="data-construction" class="section tint-section" data-section>
+   <div class="container">
+    <div class="section-kicker"><span>02</span> Learning the design process</div>
+    <h2 data-editable="data-title">Data Construction</h2>
+    <p class="section-lede" data-editable="data-lede">From completed designs to functional groups and group-wise turn-level planning supervision.</p>
+    <figure class="figure ">
+ <div class="figure-frame">
+  <div class="figure-topbar"><span class="figure-label">Two-stage data construction pipeline</span><button class="zoom-button" type="button" data-zoom-for="img-data-construction" aria-label="Enlarge Two-stage data construction pipeline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+  <div class="figure-image-area"><img id="img-data-construction" class="zoom-target" src="assets/figures/data-construction.webp" width="837.45" height="396.69" alt="Two-stage data construction pipeline" loading="lazy" decoding="async" tabindex="0" data-zoom-title="Two-stage data construction pipeline"></div>
+ </div>
+ <figcaption data-editable="data-caption"><strong>Two stages, complementary annotations.</strong> Stage 1 constructs functional groups and their execution order. Stage 2 derives a turn-level plan for each group from the before-and-after rendered states.</figcaption>
+</figure>
+    <div class="stage-grid">
+     <article class="stage-card"><div class="stage-label">STAGE 1</div><h3 data-editable="stage1-title">Functional grouping &amp; execution order</h3><p data-editable="stage1-copy">An MLLM annotator groups elements that should be planned and positioned together, assigns functional roles, and determines a dependency-aware execution order. Group regions and cumulative canvas states are then derived.</p></article>
+     <article class="stage-card"><div class="stage-label">STAGE 2</div><h3 data-editable="stage2-title">Turn-level planning annotation</h3><p data-editable="stage2-copy">With grouping and execution order fixed, before-and-after renders provide visual evidence for each group’s placement. The annotator produces grouping, execution, and layout rationales together with a qualitative layout instruction.</p></article>
+    </div>
+   </div>
+  </section>
+  <section id="playground" class="section" data-section>
+   <div class="container">
+    <div class="section-kicker"><span>03</span> The framework</div>
+    <h2 data-editable="method-title">PlayGround</h2>
+    <p class="section-lede" data-editable="method-lede">At each turn, plan from the current rendered canvas and remaining elements—not a fixed one-shot plan.</p>
+    <figure class="figure pipeline-figure">
+     <div class="figure-frame">
+      <div class="figure-topbar"><span class="figure-label">Overall pipeline</span><button type="button" class="zoom-button" data-zoom-for="img-pipeline" aria-label="Enlarge overall pipeline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+      <div class="figure-image-area"><div class="pipeline-wrap">
+       <img id="img-pipeline" class="zoom-target" src="assets/figures/pipeline.webp" width="1774.0" height="949.0" loading="lazy" decoding="async" alt="Complete PlayGround pipeline with retrieval, progressive planning, layout generation, and visual verification" tabindex="0" data-zoom-title="PlayGround · Overall pipeline">
+       <div class="diagram-highlight" id="diagram-highlight" aria-hidden="true"></div>
+      </div></div>
+      <div class="pipeline-controls" aria-label="Highlight a pipeline module">
+       <button type="button" data-module="overview" class="active" aria-pressed="true">Overview</button>
+       <button type="button" data-module="retriever" aria-pressed="false">01 Retrieve</button>
+       <button type="button" data-module="planner" aria-pressed="false">02 Plan</button>
+       <button type="button" data-module="generator" aria-pressed="false">03 Generate</button>
+       <button type="button" data-module="verifier" aria-pressed="false">04 Verify</button>
+       <span class="control-hint">Select a module to follow the pipeline</span>
+      </div>
+     </div>
+     <figcaption class="pipeline-caption" id="pipeline-caption" aria-live="polite">The accepted canvas and remaining elements define the input state for the following turn.</figcaption>
+    </figure>
+    <article id="retriever" class="module-section ret">
+     <div class="module-heading"><span class="module-no">01</span><div><h3 data-editable="retriever-title">Structure-Aware Retriever</h3><span class="module-tag">Global composition guidance · Once before generation</span></div></div>
+     <p data-editable="retriever-copy">The Retriever infers a coarse layout structure from the input elements as functional group role–region pairs. It retrieves five references using role-aware spatial similarity, canvas aspect ratio, and text–image content counts. These references remain fixed throughout generation; the Planner determines the actual element grouping.</p>
+     <figure class="figure ">
+ <div class="figure-frame">
+  <div class="figure-topbar"><span class="figure-label">Query and retrieved references</span><button class="zoom-button" type="button" data-zoom-for="img-retrieval" aria-label="Enlarge Query and retrieved references"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+  <div class="figure-image-area"><img id="img-retrieval" class="zoom-target" src="assets/figures/retrieval.webp" width="1934.0" height="996.0" alt="Query and retrieved references" loading="lazy" decoding="async" tabindex="0" data-zoom-title="Query and retrieved references"></div>
+ </div>
+ <figcaption data-editable="retrieval-caption"><strong>Structure, not identical content.</strong> Retrieved references exhibit compatible coarse layout structures and canvas geometry while containing different visual content.</figcaption>
+</figure>
+    </article>
+    <article id="planner" class="module-section plan">
+     <div class="module-heading"><span class="module-no">02</span><div><h3 data-editable="planner-title">Progressive Planner</h3><span class="module-tag">Dynamic grouping · Render-grounded composition</span></div></div>
+     <p data-editable="planner-copy">The Planner observes the current canvas and remaining elements, forms a functional group, and plans its composition. In the example below, it uses the available upper-left space for text, while the Static Planner targets a central placard already occupied by photographs.</p>
+     <figure class="figure ">
+ <div class="figure-frame">
+  <div class="figure-topbar"><span class="figure-label">Progressive versus static planning</span><button class="zoom-button" type="button" data-zoom-for="img-planner-comparison" aria-label="Enlarge Progressive versus static planning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+  <div class="figure-image-area"><img id="img-planner-comparison" class="zoom-target" src="assets/figures/planner-comparison.webp" width="3564.0" height="1275.72" alt="Progressive versus static planning" loading="lazy" decoding="async" tabindex="0" data-zoom-title="Progressive versus static planning"></div>
+ </div>
+ <figcaption data-editable="planner-caption"><strong>The same current group, different planning context.</strong> Our Planner adapts to the rendered canvas rather than relying on a fixed initial plan.</figcaption>
+</figure>
+    </article>
+    <div class="modules-bottom">
+     <article id="generator" class="module-section gen">
+      <div class="module-heading"><span class="module-no">03</span><div><h3 data-editable="generator-title">Layout Generator</h3><span class="module-tag">From a qualitative plan to editable attributes</span></div></div>
+      <p class="module-copy" data-editable="generator-copy">The Layout Generator predicts element-level attributes for the current group while keeping previously placed elements unchanged. It generates multiple candidate layouts because a group-level plan can admit different rendered outcomes.</p>
+      <div class="attribute-chips"><span>Bounding boxes</span><span>Group-local stacking</span><span>Text attributes</span></div>
+      <div class="candidate-sample"><img src="assets/figures/candidate-renders.webp" width="1601" height="274" loading="lazy" alt="Five actual candidate renders cropped from the supplied pipeline figure"></div>
+      <p class="caption-mini">Five candidate renders from the pipeline overview.</p>
+     </article>
+     <article id="verifier" class="module-section ver">
+      <div class="module-heading"><span class="module-no">04</span><div><h3 data-editable="verifier-title">Visual Verifier</h3><span class="module-tag">Inspect rendered candidates · Accept or retry</span></div></div>
+      <p class="module-copy" data-editable="verifier-copy">The Verifier selects a rendered candidate and either accepts it or returns a revised layout instruction for regeneration. Up to three verification rounds are allowed; if none is accepted, it makes a final selection among the per-round finalists.</p>
+      <div class="decision-list">
+       <div class="decision-row"><span class="decision-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><div class="decision-title">Accept</div><div class="decision-sub">Update the canvas and remaining elements.</div></div></div>
+       <div class="decision-row retry"><span class="decision-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.5 7M3 4v7h7"/></svg></span><div><div class="decision-title">Retry with feedback</div><div class="decision-sub">Revise the instruction. Regenerate the same group.</div></div></div>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section>
+  <section id="results" class="section tint-section" data-section>
+   <div class="container">
+    <div class="section-kicker"><span>04</span> Evaluation</div>
+    <h2 data-editable="results-title">Results</h2>
+    <p class="section-lede" data-editable="results-lede">We train all learnable components on Crello-v4 and evaluate on both Crello-v4 and LICA, with no additional fine-tuning on LICA.</p>
+    <div class="result-summary">
+     <div class="result-stat"><div class="stat-number">6<small>/ 6</small></div><div class="stat-text"><strong>Crello-v4</strong>Highest VLM means</div></div>
+     <div class="result-stat"><div class="stat-number">5<small>/ 6</small></div><div class="stat-text"><strong>LICA</strong>Highest VLM means</div></div>
+     <div class="result-stat"><div class="stat-number">Zero-shot</div><div class="stat-text"><strong>Cross-dataset evaluation</strong>No LICA fine-tuning</div></div>
+    </div>
+    <h3 class="subheading" data-editable="quant-title">Quantitative comparison</h3>
+    <p class="table-caption" data-editable="table-caption"><strong>Table 1.</strong> Six VLM-based criteria (mean ± sample standard deviation) and two rule-based metrics. VLM scores range from 1 to 5; higher is better. Lower T.Occ. and Rea. are better.</p>
+    <div class="table-shell">
+     <div class="table-toolbar">
+      <div class="tabs" role="tablist" aria-label="Evaluation dataset">
+       <button type="button" class="tab" role="tab" id="tab-crello" aria-selected="true" aria-controls="dataset-panel" data-dataset="crello">Crello-v4</button>
+       <button type="button" class="tab" role="tab" id="tab-lica" aria-selected="false" aria-controls="dataset-panel" data-dataset="lica" tabindex="-1">LICA <em>Zero-shot</em></button>
+      </div>
+      <label class="std-toggle"><input type="checkbox" id="show-std" checked> Show standard deviations</label>
+     </div>
+     <div id="dataset-panel" role="tabpanel" aria-labelledby="tab-crello" class="table-scroll" tabindex="0" aria-label="Scrollable quantitative results table">
+      <table class="results-table" id="results-table">
+       <caption class="sr-only" id="results-caption">Crello-v4 quantitative results from Table 1 of the supplied manuscript.</caption>
+       <thead><tr><th rowspan="2" class="method" scope="col">Method</th><th colspan="6" scope="colgroup">VLM-based metrics ↑</th><th colspan="2" scope="colgroup">Rule-based metrics ↓</th></tr><tr>
+        <th scope="col"><abbr title="Layout composition rationality">(i)<br>Composition</abbr></th>
+        <th scope="col"><abbr title="Typography legibility and hierarchy">(ii)<br>Typography</abbr></th>
+        <th scope="col"><abbr title="Visible element presentation">(iii)<br>Elements</abbr></th>
+        <th scope="col"><abbr title="Color harmony and contrast">(iv)<br>Color</abbr></th>
+        <th scope="col"><abbr title="Visual style coherence">(v)<br>Style</abbr></th>
+        <th scope="col"><abbr title="Design intention alignment">(vi)<br>Intention</abbr></th>
+        <th scope="col"><abbr title="Text occlusion">T.Occ.</abbr></th>
+        <th scope="col"><abbr title="Text unreadability">Rea.</abbr></th>
+       </tr></thead><tbody id="results-body"></tbody>
+      </table>
+     </div>
+     <div class="table-footnote"><strong>Bold</strong> and <u>underline</u> mark the best and second-best means among the evaluated methods, excluding GT. VFLM places text on a fixed ground-truth background. Text-free sources are excluded from the typography aggregate and from all VFLM aggregates.</div>
+    </div>
+    <div class="metrics-key"><span><b>(i)</b> Layout composition rationality</span><span><b>(ii)</b> Typography legibility and hierarchy</span><span><b>(iii)</b> Visible element presentation</span><span><b>(iv)</b> Color harmony and contrast</span><span><b>(v)</b> Visual style coherence</span><span><b>(vi)</b> Design intention alignment</span></div>
+    <div class="qual-toolbar"><h3 data-editable="qual-title">Qualitative comparisons</h3><div class="tabs" role="tablist" aria-label="Qualitative examples">
+     <button type="button" class="tab" role="tab" id="tab-qual-main" aria-selected="true" aria-controls="qual-main" data-qual="main">Main comparison</button>
+     <button type="button" class="tab" role="tab" id="tab-qual-more" aria-selected="false" aria-controls="qual-more" data-qual="more" tabindex="-1">More Crello examples</button>
+    </div></div>
+    <div class="qual-panel" id="qual-main" role="tabpanel" aria-labelledby="tab-qual-main"><figure class="figure ">
+ <div class="figure-frame">
+  <div class="figure-topbar"><span class="figure-label">Qualitative comparison · Crello-v4</span><button class="zoom-button" type="button" data-zoom-for="img-main-comparison" aria-label="Enlarge Qualitative comparison · Crello-v4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+  <div class="figure-image-area"><img id="img-main-comparison" class="zoom-target" src="assets/figures/main-comparison.webp" width="602.4" height="536.46" alt="Qualitative comparison · Crello-v4" loading="lazy" decoding="async" tabindex="0" data-zoom-title="Qualitative comparison · Crello-v4"></div>
+ </div>
+ <figcaption data-editable="main-qual-caption"><strong>From the same supplied elements.</strong> We compare rendered outputs with the corresponding ground-truth designs. Columns follow the source figure: GT, FlexDM, LaDeCo, PosterCopilot, VFLM, and PlayGround.</figcaption>
+</figure></div>
+    <div class="qual-panel" id="qual-more" role="tabpanel" aria-labelledby="tab-qual-more" hidden><figure class="figure ">
+ <div class="figure-frame">
+  <div class="figure-topbar"><span class="figure-label">Additional qualitative comparison · Crello-v4</span><button class="zoom-button" type="button" data-zoom-for="img-crello-examples" aria-label="Enlarge Additional qualitative comparison · Crello-v4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+  <div class="figure-image-area"><img id="img-crello-examples" class="zoom-target" src="assets/figures/crello-examples.webp" width="561.16" height="772.2" alt="Additional qualitative comparison · Crello-v4" loading="lazy" decoding="async" tabindex="0" data-zoom-title="Additional qualitative comparison · Crello-v4"></div>
+ </div>
+ <figcaption data-editable="more-qual-caption"><strong>Additional designs from Crello-v4.</strong> The same comparison spans different visual styles, canvas formats, and text–image compositions.</figcaption>
+</figure></div>
+   </div>
+  </section>
+  <section id="intention-to-design" class="section" data-section>
+   <div class="container extension-layout">
+    <div class="extension-copy">
+     <div class="section-kicker"><span>05</span> Beyond supplied elements</div>
+     <h2 data-editable="extension-title">Extension to<br>Intention-to-Design</h2>
+     <p data-editable="extension-intro">Users may have a design intention without the visual and textual elements needed to realize it. We extend PlayGround to this setting by prepending an element-generation stage.</p>
+     <p data-editable="extension-method">GPT-5.6 Luna derives the textual elements and visual-element descriptions. Qwen-Image-2.1 generates the corresponding visual elements, which are then composed by PlayGround without modifying the core pipeline.</p>
+     <p data-editable="extension-result">These examples on Crello demonstrate the modular extensibility of PlayGround as a downstream composition module, from element-to-design to intention-to-design generation.</p>
+     <div class="extension-flow" aria-label="Extension workflow"><div>Design intention</div><div>Element generation</div><div>PlayGround</div><div>Editable design</div></div>
+    </div>
+    <div><figure class="figure ">
+ <div class="figure-frame">
+  <div class="figure-topbar"><span class="figure-label">Intention-to-design · Qualitative results</span><button class="zoom-button" type="button" data-zoom-for="img-intention-to-design" aria-label="Enlarge Intention-to-design · Qualitative results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg> Enlarge</button></div>
+  <div class="figure-image-area"><img id="img-intention-to-design" class="zoom-target" src="assets/figures/intention-to-design.webp" width="495.94" height="838.98" alt="Intention-to-design · Qualitative results" loading="lazy" decoding="async" tabindex="0" data-zoom-title="Intention-to-design · Qualitative results"></div>
+ </div>
+ <figcaption data-editable="i2d-caption">Qualitative examples of PlayGround applied to elements generated from a design intention.</figcaption>
+</figure></div>
+   </div>
+  </section>
+  <section id="citation" class="section citation-section tint-section" data-section>
+   <div class="container"><div class="reading">
+    <div class="citation-heading"><div><div class="section-kicker"><span>06</span> Reference</div><h2 data-editable="citation-title">Citation</h2></div><span class="draft-status" id="citation-status">Publication metadata pending</span></div>
+    <div class="citation-box"><div class="code-label">BIBTEX · DRAFT</div><button type="button" class="copy-button" id="copy-citation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3"/></svg> <span>Copy BibTeX</span></button>
+     <pre id="bibtex" data-editable="bibtex">% Add final publication metadata before publishing.
+@misc{playground,
+  title = {{PlayGround}: Progressive Layout Generation
+           with Render-Grounded Planning},
+  author = {Lee, Jaeho and Heo, Junhwan and Park, Junghyun and Moon, Wonjun
+            and Yang, Eunju and Jang, Seungho and Kim, Seongchan and Kim, Seungryong},
+  note = {Manuscript}
+}</pre>
+    </div>
+    <p class="citation-note" data-editable="citation-note">Author names are provided above. Final publication metadata will be added when available; this citation remains a draft.</p>
+   </div></div>
+  </section>
+ </main>
+ <footer class="site-footer"><div class="container footer-inner"><strong>PlayGround</strong><span>Progressive Layout Generation with Render-Grounded Planning</span><a href="#overview">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div></footer>
+ <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-describedby="lightbox-help" hidden>
+  <span class="sr-only" id="lightbox-title">Enlarged figure</span>
+  <span class="sr-only" id="lightbox-help">Click the image or surrounding area, use the close button, or press Escape to close.</span>
+  <img class="lightbox-image" id="lightbox-image" alt="Enlarged figure">
+  <button class="lightbox-close" id="close-lightbox" type="button" aria-label="Close enlarged figure" title="Close (Esc)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+ </div>
+ <div class="editor-tip" id="editor-tip" hidden>Click outlined text to edit. “Save HTML” exports your current changes as a new standalone file.</div>
+ <div class="editor-bar" aria-label="Draft editing controls"><button id="edit-toggle" type="button" aria-pressed="false">Edit text</button><button id="export-html" type="button" class="editor-primary" hidden>Save HTML</button><button id="edit-done" type="button" hidden>Done</button></div>
+ <div id="toast" class="toast" role="status" hidden></div>
+ <script src="site-content.js"></script>
+ <script src="main.js"></script>
+</body>
+</html>
