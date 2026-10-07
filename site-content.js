@@ -40,7 +40,7 @@ window.SITE_CONFIG = {
   "authorNotes": "†: Corresponding Author",
   "venue": "arXiv 2026",
   "paperUrl": "",
-  "codeUrl": "",
+  "codeUrl": "https://github.com/cvlab-kaist/PlayGround/tree/main",
   "citationComment": "Draft citation. Author names are supplied; final publication metadata is pending.",
   "provenance": "Table 1 and abstract: 8295_PLAYGROUND_Progressive_La (1).pdf, pp. 1 and 7. Figures: user-provided pdf.zip."
 };
