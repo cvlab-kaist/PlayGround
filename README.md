@@ -17,7 +17,7 @@
 
 <h3 align="center">
   Paper (coming soon) |
-  <a href="https://">Project Page</a>
+  <a href="https://cvlab-kaist.github.io/PlayGround/">Project Page</a>
 </h3>
 
 <p align="center"><b>Code and model weights will be updated soon.</b></p>
