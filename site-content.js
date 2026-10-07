@@ -20,11 +20,11 @@ window.SITE_CONFIG = {
   },
   {
     "name": "Eunju Yang",
-    "url": "https://cvlab-kaist.github.io/Playground/#overview"
+    "url": "https://scholar.google.com/citations?hl=ko&user=ycUwZ1MAAAAJ"
   },
   {
     "name": "Seungho Jang",
-    "url": "http://www.linkedin.com/in/hoosong0235"
+    "url": "https://hugeson0235.github.io/"
   },
   {
     "name": "Seongchan Kim",
