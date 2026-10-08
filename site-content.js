@@ -15,7 +15,7 @@ window.SITE_CONFIG = {
     "url": "https://junghyun-james-park.github.io/"
   },
   {
-    "name": "Wonjun Moon",
+    "name": "WonJun Moon",
     "url": "https://wjun0830.github.io/"
   },
   {
