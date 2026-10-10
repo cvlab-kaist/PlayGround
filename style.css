@@ -267,6 +267,25 @@ body:not([data-preview=true]) .editor-bar { display:none; }
 body.edit-mode [data-editable] { outline:1px dashed #90acd8; outline-offset:5px; border-radius:2px; cursor:text; }
 body.edit-mode [data-editable]:focus { outline:2px solid #6d96d4; }
 .toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); z-index:200; background:#263d60; color:#fff; padding:10px 18px; border-radius:7px; font-size:12px; box-shadow:0 7px 30px #0c224b33; }
+/* Ablation study: two compact tables side by side, findings below each. */
+.ablation-grid { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:28px; align-items:start; }
+.ablation-card { margin:0; min-width:0; }
+.ablation-caption { font-size:13.5px; color:#73849f; line-height:1.7; padding:0 2px; }
+.ablation-caption strong { color:#536781; }
+.ablation-card .table-shell { margin-top:14px; }
+.results-table.ablation-table { min-width:0; }
+.ablation-table th,.ablation-table td { padding:11px 10px; white-space:nowrap; }
+.results-table.ablation-table thead tr:first-child th { font-size:11.5px; font-weight:600; color:#576c8b; background:#fcfdff; padding:13px 10px; border-bottom:1px solid #edf1f6; }
+.results-table.ablation-table thead tr:first-child th.method { padding-left:20px; }
+.ablation-table th.method { min-width:0; white-space:nowrap; }
+.ablation-table td { font-size:14px; }
+.ablation-table td.diff { color:#b45a2c; font-weight:700; background:#fdf4ee; }
+.ablation-table tbody tr:last-child th,.ablation-table tbody tr:last-child td { border-bottom:none; }
+.ablation-notes { margin:16px 0 0; padding-left:18px; color:#60718a; font-size:14px; line-height:1.75; }
+.ablation-notes li { margin-bottom:7px; }
+.ablation-notes strong { color:#3d506e; }
+@media(max-width:900px) { .ablation-grid { grid-template-columns:minmax(0,1fr); gap:34px; } }
+@media(max-width:560px) { .ablation-table .ours-badge { display:none; } .ablation-caption { font-size:12px; } .ablation-table th,.ablation-table td { padding:9px 7px; } .ablation-table td { font-size:12.5px; } .ablation-notes { font-size:12.5px; } }
 @media(min-width:1540px) { .side-nav { display:block; } body { padding-left:90px; } .site-header { margin-left:-90px; } .hero-inner { transform:translateX(-12px); } }
 @media(max-width:1050px) { .top-nav { gap:18px; } .top-nav a { font-size:11px; } .section { padding:60px 0; } .result-stat { padding:0 17px; } .stat-number { font-size:29px; } .extension-layout { gap:28px; } .extension-copy h2 { font-size:31px; } }
 @media(max-width:800px) { .header-inner { width:calc(100% - 40px); } .container { width:calc(100% - 40px); } .top-nav { gap:17px; } .top-nav a[data-nav=abstract],.top-nav a[data-nav=citation] { display:none; } .hero { padding-top:37px; } .hero-mascot { width:136px; } .hero h1 { font-size:65px; padding-right:22px; } .hero-subtitle { font-size:35px; } .tldr { padding:22px; } .tldr p { font-size:16px; } .section h2 { font-size:31px; } .section-lede { font-size:15px; } .stage-grid { gap:16px; } .stage-card { padding:18px; } .module-heading h3 { font-size:23px; } .modules-bottom { gap:24px; } .module-copy,.module-section>p { font-size:14px; } .result-stat { display:block; } .stat-text { margin-top:8px; } .metrics-key { gap:8px 15px; font-size:11px; } .extension-layout { grid-template-columns:1fr; } .extension-copy { position:static; } .extension-copy h2 br { display:none; } .extension-flow { display:flex; gap:25px; flex-wrap:wrap; padding:0; border:none; margin-bottom:0; } .extension-flow div:before { display:none; } .extension-flow div { margin-bottom:0; } .extension-layout .figure { max-width:620px; margin:auto; } .citation-heading { align-items:flex-start; } .draft-status { font-size:9px; } .control-hint { display:none; } }

@@ -14,7 +14,7 @@
  <link rel="icon" href="assets/favicon.png" type="image/png">
  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
- <link rel="stylesheet" href="style.css?v=a37233f0">
+ <link rel="stylesheet" href="style.css?v=14822413">
 </head>
 <body data-preview="false">
  <a class="skip-link" href="#main">Skip to content</a>
@@ -27,13 +27,14 @@
     <a href="#data-construction" data-nav="data-construction">Data construction</a>
     <a href="#playground" data-nav="playground">PlayGround</a>
     <a href="#results" data-nav="results">Results</a>
+    <a href="#ablation" data-nav="ablation">Ablation</a>
     <a href="#intention-to-design" data-nav="intention-to-design">Extension</a>
     <a href="#citation" data-nav="citation" class="nav-citation">Citation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
    </nav>
   </div>
   <div class="scroll-progress" aria-hidden="true"></div>
  </header>
- <aside class="side-nav" aria-label="Section navigation"><span class="side-heading">On this page</span><a href="#overview" data-nav="overview">Overview</a><a href="#abstract" data-nav="abstract">Abstract</a><a href="#data-construction" data-nav="data-construction">Data construction</a><a href="#playground" data-nav="playground">PlayGround</a><a href="#results" data-nav="results">Results</a><a href="#intention-to-design" data-nav="intention-to-design">Extension</a><a href="#citation" data-nav="citation">Citation</a></aside>
+ <aside class="side-nav" aria-label="Section navigation"><span class="side-heading">On this page</span><a href="#overview" data-nav="overview">Overview</a><a href="#abstract" data-nav="abstract">Abstract</a><a href="#data-construction" data-nav="data-construction">Data construction</a><a href="#playground" data-nav="playground">PlayGround</a><a href="#results" data-nav="results">Results</a><a href="#ablation" data-nav="ablation">Ablation</a><a href="#intention-to-design" data-nav="intention-to-design">Extension</a><a href="#citation" data-nav="citation">Citation</a></aside>
  <main id="main">
   <section id="overview" class="hero" data-section>
    <div class="hero-inner">
@@ -60,7 +61,7 @@
     </figure>
     <div class="tldr">
      <div class="tldr-header"><span class="tldr-label">TL;DR</span></div>
-     <p data-editable="tldr">We propose <strong>PlayGround</strong>, a progressive layout generation framework that adaptively adjusts the design workflow based on the <strong>current rendered canvas</strong>. Under our six-criterion VLM evaluation, PlayGround performs favorably against existing methods on both Crello and LICA, including zero-shot evaluation on LICA.</p>
+     <p data-editable="tldr">We propose <strong>PlayGround</strong>, a progressive layout generation framework that adaptively adjusts the design workflow based on the <strong>current rendered canvas</strong>. Experiments on Crello and LICA demonstrate improved design quality and zero-shot generalization, with ablations validating the effectiveness of our key components.</p>
     </div>
    </div>
   </section>
@@ -208,6 +209,55 @@
 </figure></div>
    </div>
   </section>
+  <section id="ablation" class="section" data-section>
+   <div class="container">
+    <h2 data-editable="ablation-title">Ablation Study</h2>
+    <p class="section-lede" data-editable="ablation-lede">We ablate PlayGround on a balanced subset of 600 Crello test designs (100 from each of six design categories, each with at least eight elements). VLM denotes the mean of the six VLM-based scores; higher is better.</p>
+    <div class="ablation-grid">
+     <figure class="ablation-card">
+      <figcaption class="ablation-caption"><strong>Table 2.</strong> Pipeline components. Highlighted cells differ from the full model (I). <em>Static</em> is a separately trained planner that produces the entire plan once.</figcaption>
+      <div class="table-shell"><div class="table-scroll" tabindex="0" aria-label="Ablation on pipeline components">
+       <table class="results-table ablation-table">
+        <thead><tr><th scope="col" class="method">#</th><th scope="col">Retriever</th><th scope="col">Planner</th><th scope="col">K</th><th scope="col">Verifier</th><th scope="col">VLM ↑</th></tr></thead>
+        <tbody>
+          <tr class="ours"><th scope="row" class="method">(I) <span class="ours-badge">FULL</span></th><td>Top-5</td><td>✓</td><td>5</td><td>✓</td><td class="best">3.958</td></tr>
+          <tr><th scope="row" class="method">(II)</th><td class="diff">✗</td><td>✓</td><td>5</td><td>✓</td><td>3.901</td></tr>
+          <tr><th scope="row" class="method">(III)</th><td class="diff">Lowest-5</td><td>✓</td><td>5</td><td>✓</td><td>3.867</td></tr>
+          <tr><th scope="row" class="method">(IV)</th><td>Top-5</td><td>✓</td><td class="diff">3</td><td>✓</td><td>3.923</td></tr>
+          <tr><th scope="row" class="method">(V)</th><td>Top-5</td><td>✓</td><td class="diff">1</td><td>✓</td><td>3.891</td></tr>
+          <tr><th scope="row" class="method">(VI)</th><td>Top-5</td><td>✓</td><td>5</td><td class="diff">✗</td><td>3.698</td></tr>
+          <tr><th scope="row" class="method">(VII)</th><td>Top-5</td><td class="diff">Static</td><td>5</td><td>✓</td><td>3.894</td></tr>
+        </tbody>
+       </table>
+      </div></div>
+      <ul class="ablation-notes">
+       <li><strong>Retrieval.</strong> Top-5 references help (I vs. II), while the lowest-ranked references are worse than none (III): mismatched references harm generation.</li>
+       <li><strong>Candidates.</strong> More layout candidates steadily help: K = 1 → 3 → 5 (V → IV → I).</li>
+       <li><strong>Verifier.</strong> Replacing it with random selection causes the largest drop (VI).</li>
+       <li><strong>Planner.</strong> Planning once at the start (VII) underperforms progressive planning from intermediate renders.</li>
+      </ul>
+     </figure>
+     <figure class="ablation-card">
+      <figcaption class="ablation-caption"><strong>Table 3.</strong> Per-turn granularity and grouping. Zero-shot with GPT-5.6 Luna, using only the Planner–Layout Generator loop to isolate these factors.</figcaption>
+      <div class="table-shell"><div class="table-scroll" tabindex="0" aria-label="Ablation on per-turn granularity and grouping">
+       <table class="results-table ablation-table">
+        <thead><tr><th scope="col" class="method">#</th><th scope="col">Grouping scheme</th><th scope="col">Per-turn unit</th><th scope="col">VLM ↑</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="method">(I)</th><td>None</td><td>Element-wise</td><td>3.464</td></tr>
+          <tr><th scope="row" class="method">(II)</th><td>None</td><td>Full-layout</td><td>3.351</td></tr>
+          <tr><th scope="row" class="method">(III)</th><td>LaDeCo-style</td><td>Semantic layer</td><td>3.532</td></tr>
+          <tr class="ours"><th scope="row" class="method">(IV) <span class="ours-badge">OURS</span></th><td>Ours</td><td>Functional group</td><td class="best">3.578</td></tr>
+        </tbody>
+       </table>
+      </div></div>
+      <ul class="ablation-notes">
+       <li><strong>Sequential decisions.</strong> Element-wise generation (I) outperforms placing all elements at once (II).</li>
+       <li><strong>Grouping.</strong> Group-based variants improve further, and our functional groups (IV) outperform LaDeCo-style semantic layers (III), which use five predefined layers in a fixed order.</li>
+      </ul>
+     </figure>
+    </div>
+   </div>
+  </section>
   <section id="intention-to-design" class="section" data-section>
    <div class="container extension-layout">
     <div class="extension-copy">
@@ -253,7 +303,7 @@
  <div class="editor-tip" id="editor-tip" hidden>Click outlined text to edit. “Save HTML” exports your current changes as a new standalone file.</div>
  <div class="editor-bar" aria-label="Draft editing controls"><button id="edit-toggle" type="button" aria-pressed="false">Edit text</button><button id="export-html" type="button" class="editor-primary" hidden>Save HTML</button><button id="edit-done" type="button" hidden>Done</button></div>
  <div id="toast" class="toast" role="status" hidden></div>
- <script src="site-content.js?v=8f526c7f"></script>
+ <script src="site-content.js?v=b1cb41e3"></script>
  <script src="main.js?v=29203b49"></script>
 </body>
 </html>
